@@ -1,12 +1,12 @@
 #include "Fixed.hpp"
 #include <iostream>
 #include <cmath>
+
 Fixed::Fixed()
 {
     _fixed_point = 0;
     std::cout<<"Default constructor called"<<std::endl;
 }
-
 
 Fixed::~Fixed()
 {
@@ -37,9 +37,6 @@ int Fixed::getRawBits( void ) const
 }
 
 
-
-//-------
-
 Fixed::Fixed(const int num)
 {
     setRawBits(num<<_fixed);
@@ -50,4 +47,20 @@ Fixed::Fixed(const float num)
 {
     setRawBits((int)(roundf(num*(1<<_fixed))));
     std::cout<<"Float constructor called"<<std::endl;
+}
+
+float Fixed::toFloat( void ) const
+{
+    return  ((float)(_fixed_point)/(1<<_fixed));
+}
+
+int Fixed::toInt( void ) const
+{
+    return (((int)(getRawBits()/(1<<_fixed))));
+}
+
+std::ostream& operator << (std::ostream &o,const Fixed &c)
+{
+    std::cout<<(c.toFloat());
+    return (o);
 }
