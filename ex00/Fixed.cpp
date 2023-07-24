@@ -1,5 +1,4 @@
 #include "Fixed.hpp"
-#include <iostream>
 
 Fixed::Fixed()
 {
@@ -21,8 +20,11 @@ Fixed::Fixed(const Fixed&t)
 
 Fixed& Fixed::operator=(const Fixed& x)
 {
-    std::cout<<"Copy assignment operator called"<<std::endl;
-    this->setRawBits(x.getRawBits());
+    if(this!=&x)
+    {
+        std::cout<<"Copy assignment operator called"<<std::endl;
+        this->setRawBits(x.getRawBits());
+    }
     return *this;
 }
 
