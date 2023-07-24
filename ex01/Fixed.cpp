@@ -59,8 +59,9 @@ int Fixed::toInt( void ) const
     return (((int)(getRawBits()/(1<<_fixed))));
 }
 
-std::ostream& operator << (std::ostream &o,const Fixed &c)
+std::ostream & operator << (std::ostream &o,const Fixed &c)
 {
     std::cout<<(c.toFloat());
     return (o);
 }
+
